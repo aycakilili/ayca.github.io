@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>İletişim — Rent A Car</title>
+  <style>
+    :root{
+      --bg:#f7f9fb; --card:#ffffff; --muted:#68707a; --accent:#0066cc; --accent-2:#004a99;
+      --glass: rgba(255,255,255,0.6);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#ffffff);color:#0b1220}
+    .container{max-width:1100px;margin:40px auto;padding:24px}
+
+    /* Header */
+    header.site-header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    header .brand{display:flex;flex-direction:column}
+    header h1{margin:0;font-size:20px}
+    header p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Card */
+    .card{background:var(--card);border-radius:12px;box-shadow:0 6px 18px rgba(11,17,32,0.06);padding:20px;}
+
+    /* Layout */
+    .grid{display:grid;grid-template-columns:1fr 420px;gap:24px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+
+    /* Form */
+    form.contact-form{display:flex;flex-direction:column;gap:12px}
+    .row{display:flex;gap:12px}
+    .row .input{flex:1}
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type="text"],input[type="email"],textarea,select{width:100%;padding:10px 12px;border:1px solid #e6e9ee;border-radius:8px;font-size:14px}
+    textarea{min-height:120px;resize:vertical}
+    .actions{display:flex;gap:12px;align-items:center}
+    button.primary{background:linear-gradient(180deg,var(--accent),var(--accent-2));color:#fff;padding:10px 16px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    button.ghost{background:transparent;border:1px solid #e6e9ee;padding:8px 12px;border-radius:8px;cursor:pointer}
+    .hint{font-size:13px;color:var(--muted)}
+
+    /* Contact info column */
+    .info{display:flex;flex-direction:column;gap:14px}
+    .info .item{display:flex;gap:12px;align-items:flex-start}
+    .info svg{width:22px;height:22px;flex-shrink:0;margin-top:2px}
+    .info .meta{font-size:15px}
+    .info .muted{color:var(--muted);font-size:13px}
+
+    /* Footer contact strip */
+    footer.contact-strip{margin-top:26px;padding:18px;border-radius:10px;background:linear-gradient(90deg,rgba(0,102,204,0.06),rgba(0,74,153,0.03));display:flex;justify-content:space-between;align-items:center;gap:12px}
+    footer .left{display:flex;flex-direction:column}
+    footer .address{font-weight:600}
+    footer .small{color:var(--muted);font-size:13px}
+    @media (max-width:600px){footer.contact-strip{flex-direction:column;align-items:flex-start}}
+
+    /* small success */
+    .toast{position:fixed;right:20px;bottom:20px;background:#0b1220;color:#fff;padding:12px 16px;border-radius:10px;box-shadow:0 8px 24px rgba(11,17,32,0.15);display:none}
+
+    /* accessibility focus */
+    input:focus,textarea:focus,select:focus,button:focus{outline:3px solid rgba(0,102,204,0.12);outline-offset:2px}
+
+    /* small */
+    .small-note{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="brand">
+        <h1>Rent A Car — İletişim</h1>
+        <p>Herhangi bir soru, teklif veya rezervasyon desteği için bize yazın.</p>
+      </div>
+    </header>
+
+    <main class="card">
+      <div class="grid">
+        <!-- Left: Form -->
+        <section>
+          <h2 style="margin-top:0;margin-bottom:6px">İletişim Formu</h2>
+          <p class="small-note">Aşağıdaki formu doldurun, en kısa sürede dönüş yapacağız.</p>
+
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="row">
+              <div class="input">
+                <label for="name">İsim Soyisim</label>
+                <input id="name" name="name" type="text" placeholder="Ahmet Yılmaz" required />
+              </div>
+              <div class="input">
+                <label for="phone">Telefon</label>
+                <input id="phone" name="phone" type="text" placeholder="+90 5xx xxx xx xx" required />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input">
+                <label for="email">E-posta</label>
+                <input id="email" name="email" type="email" placeholder="example@ornek.com" required />
+              </div>
+              <div class="input">
+                <label for="topic">Konu</label>
+                <select id="topic" name="topic">
+                  <option value="rezervasyon">Rezervasyon</option>
+                  <option value="kurumsal">Kurumsal</option>
+                  <option value="destek">Destek</option>
+                  <option value="diger">Diğer</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">Mesajınız</label>
+              <textarea id="message" name="message" placeholder="Mesajınızı buraya yazın..." required></textarea>
+            </div>
+
+            <!-- honeypot (spam önleme) -->
+            <div style="display:none">
+              <label>Do not fill<input name="website" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="primary">Gönder</button>
+              <button type="reset" class="ghost">Temizle</button>
+              <div class="hint">Ya da: <a href="mailto:info@rentacar.com">info@rentacar.com</a></div>
+            </div>
+
+            <div id="formHint" class="small-note" aria-live="polite"></div>
+
+          </form>
+
+          <p style="margin-top:12px;color:var(--muted);font-size:13px">Not: Sunucunuzu veya Formspree/Netlify/Backend'inizi bağlamak için formun submit kısmında gösterilen örneği kullanabilirsiniz.</p>
+        </section>
+
+        <!-- Right: Contact details -->
+        <aside class="info">
+          <div>
+            <h3 style="margin:0 0 8px 0">İletişim Bilgileri</h3>
+          </div>
+
+          <div class="item">
+            <!-- Address icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 6.5 11 6.5 11S18 14.25 18 9c0-3.87-3.13-7-6-7z" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="meta">Adres</div>
+              <div class="muted">Atatürk Mah. Example Cd. No:12, Kadıköy / İstanbul</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <!-- Phone icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3 5.18 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.72c.12 1.05.38 2.07.76 3.03a2 2 0 0 1-.45 2.11L9.91 11.09a16 16 0 0 0 4 4l1.23-1.23a2 2 0 0 1 2.11-.45c.96.38 1.98.64 3.03.76A2 2 0 0 1 22 16.92z" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="meta">Telefon</div>
+              <div class="muted">+90 216 000 00 00 (7/24 Destek)</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <!-- Email icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v16H4z" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 6l-10 7L2 6" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="meta">E-posta</div>
+              <div class="muted">info@rentacar.com</div>
+            </div>
+          </div>
+
+          <div class="item">
+            <!-- Hours icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#000" stroke-width="1.2"/><path d="M12 7v6l4 2" stroke="#000" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <div class="meta">Çalışma Saatleri</div>
+              <div class="muted">Hafta içi 08:30 - 20:00 • Cumartesi 09:00 - 18:00</div>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+
+      <!-- Footer contact strip (sayfanın en altı) -->
+      <footer class="contact-strip" aria-label="İletişim adres bilgileri">
+        <div class="left">
+          <div class="address">Atatürk Mah. Example Cd. No:12, Kadıköy, İstanbul</div>
+          <div class="small">Telefon: +90 216 000 00 00 • E-posta: info@rentacar.com</div>
+        </div>
+        <div class="right small">Vergi No: 1234567890 • Mersis: 0123 4567 8900 1234</div>
+      </footer>
+
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('contactForm');
+      const hint = document.getElementById('formHint');
+      const toast = document.getElementById('toast');
+
+      function showToast(text){
+        toast.textContent = text;
+        toast.style.display = 'block';
+        setTimeout(()=>{toast.style.display='none'},3500);
+      }
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        hint.textContent = '';
+
+        // simple client-side validation
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const phone = form.phone.value.trim();
+        const message = form.message.value.trim();
+        const honeypot = form.website && form.website.value;
+
+        if(honeypot){ // spam
+          return;
+        }
+
+        if(!name || !email || !phone || !message){
+          hint.textContent = 'Lütfen tüm zorunlu alanları doldurun.';
+          return;
+        }
+
+        // ready to send: here you should integrate with your backend or a form service
+        // Example: send to your API endpoint using fetch
+        // fetch('/api/contact', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,phone,message})})
+        //  .then(...) handle server response
+
+        // For demo we simulate a successful send
+        try{
+          // simulate network delay
+          await new Promise(r=>setTimeout(r,700));
+          form.reset();
+          hint.textContent = '';
+          showToast('Mesajınız başarıyla gönderildi — teşekkürler!');
+        }catch(err){
+          hint.textContent = 'Gönderilirken bir hata oluştu. Lütfen tekrar deneyin.';
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>

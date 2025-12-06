@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hakkımızda — Rent A Car</title>
+  <style>
+    :root{
+      --bg:#f8fafd; --card:#ffffff; --dark:#0b1220; --muted:#6f7781;
+      --accent:#0066cc; --accent-2:#004a99;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--dark)}
+
+    .hero{
+      background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.45)), url('assets/images/hero-car.jpg') center/cover;
+      color:#fff;text-align:center;padding:120px 20px;
+    }
+    .hero h1{font-size:38px;margin:0 0 10px;font-weight:700}
+    .hero p{font-size:18px;margin:0;max-width:600px;margin:auto}
+
+    .container{max-width:1000px;margin:40px auto;padding:0 24px}
+    .section{margin-bottom:60px}
+    .section h2{font-size:26px;margin-bottom:14px;color:var(--accent-2)}
+    .section p{color:var(--muted);line-height:1.7;font-size:15px}
+
+    .values{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+    .value-item{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
+    .value-item h3{margin:0 0 8px;font-size:18px;color:var(--accent)}
+    .value-item p{font-size:14px;line-height:1.6;color:var(--muted)}
+
+    @media(max-width:780px){
+      .values{grid-template-columns:1fr}
+    }
+
+    .stats{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      padding:50px 20px;color:#fff;border-radius:16px;
+      text-align:center;display:flex;justify-content:space-around;
+      flex-wrap:wrap;gap:24px;margin:60px 0;
+    }
+    .stat-box{font-size:22px;font-weight:700}
+    .stat-box span{display:block;font-size:14px;font-weight:400;margin-top:6px;color:#e9ecf2}
+
+    footer{margin:40px 0 20px;text-align:center;font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Biz, Sürüş Keyfini Sanata Dönüştürüyoruz</h1>
+    <p>Rent A Car olarak, güvenli, konforlu ve profesyonel bir kiralama deneyimini her yolculuğunuzda hissettiriyoruz.</p>
+  </header>
+
+  <main class="container">
+
+    <section class="section">
+      <h2>Hakkımızda</h2>
+      <p>
+        2010 yılından bu yana, premium araç kiralama hizmetlerinde kalite ve profesyonelliği ön planda tutuyoruz.
+        Gelişen filo ağımız, sürekli yenilenen lüks segment araçlarımız ve müşteri memnuniyetini esas alan çalışma anlayışımız ile
+        sektörde güvenin ve konforun simgesi haline geldik.
+      </p>
+      <p>
+        Rent A Car, yalnızca bir araç kiralama firması değil; yol boyunca size eşlik eden çözüm ortağınızdır.
+        Uçak inişinizden otel transferlerinize, şehir içi kullanımdan VIP şoför hizmetlerine kadar geniş bir hizmet yelpazesi sunuyoruz.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Misyonumuz</h2>
+      <p>
+        Müşterilerimizin her seyahatte konforlu, güvenli ve prestijli bir deneyim yaşamasını sağlamak;
+        yenilikçi ve hızlı çözümler ile kusursuz hizmet sunmaktır.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Vizyonumuz</h2>
+      <p>
+        Türkiye'nin lider araç kiralama markası olarak, her yıl filomuzu büyütüp teknolojik altyapımızı daha ileri taşıyarak
+        global standartlarda hizmet sunmak.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Değerlerimiz</h2>
+      <div class="values">
+        <div class="value-item">
+          <h3>Güvenilirlik</h3>
+          <p>Müşteri memnuniyeti odaklı, şeffaf ve profesyonel hizmet standartları.</p>
+        </div>
+        <div class="value-item">
+          <h3>Konfor</h3>
+          <p>Her segmentte bakımlı, temiz ve yüksek donanımlı araç filosu.</p>
+        </div>
+        <div class="value-item">
+          <h3>Prestij</h3>
+          <p>Lüks araç seçenekleri ve VIP transfer ayrıcalıkları.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="stats">
+      <div class="stat-box">+12 Yıl<span>Kesintisiz Tecrübe</span></div>
+      <div class="stat-box">+180 Araç<span>Geniş Filo</span></div>
+      <div class="stat-box">%98<span>Müşteri Memnuniyeti</span></div>
+      <div class="stat-box">7/24<span>Destek & Yol Yardım</span></div>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2025 Rent A Car — Tüm Hakları Saklıdır.
+  </footer>
+
+</body>
+</html>

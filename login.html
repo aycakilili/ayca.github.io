@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent A Car - Giriş</title>
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+
+<body class="login-body">
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <span>RENT A CAR</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Anasayfa</a>
+            <a href="cars.html">Araçlar</a>
+            <a href="login.html" class="active">Giriş</a>
+        </nav>
+    </header>
+
+    <!-- LOGIN BOX -->
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Giriş Yap</h2>
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="email@example.com">
+
+            <label>Şifre</label>
+            <div class="password-wrapper">
+                <input type="password" id="password" placeholder="Şifre">
+                <span class="toggle-password" onclick="togglePassword()">👁</span>
+            </div>
+
+            <button class="login-btn" onclick="login()">Giriş Yap</button>
+
+            <p class="register-text">
+                Hesabınız yok mu? <a href="register.html">Kayıt Ol</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const pass = document.getElementById("password");
+            pass.type = (pass.type === "password") ? "text" : "password";
+        }
+    </script>
+
+    <script src="assets/js/app.js"></script>
+
+</body>
+</html>

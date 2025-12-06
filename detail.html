@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent A Car - Araç Detay</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Rent A Car</h1>
+    <nav>
+        <a href="index.html">Anasayfa</a>
+        <a href="cars.html">Araçlar</a>
+        <a href="login.html">Giriş</a>
+    </nav>
+</header>
+
+<section class="car-detail">
+    <h2>Fiat Egea</h2>
+
+    <div class="car-images">
+        <img src="assets/images/car1.jpg" alt="Fiat Egea">
+        <img src="assets/images/car1-2.jpg" alt="Fiat Egea">
+    </div>
+
+    <div class="car-info">
+        <p><strong>Vites:</strong> Manuel</p>
+        <p><strong>Yakıt:</strong> Benzin</p>
+        <p><strong>Yıl:</strong> 2022</p>
+        <p><strong>Koltuk Sayısı:</strong> 5</p>
+        <p><strong>Bagaj Kapasitesi:</strong> 3 valiz</p>
+        <p><strong>Günlük Fiyat:</strong> ₺350</p>
+        <p><strong>Açıklama:</strong> Konforlu, yakıt tasarruflu ve güvenli bir araçtır. Şehir içi ve uzun yol için uygundur.</p>
+    </div>
+
+    <div class="reservation-form">
+        <h3>Rezervasyon Yap</h3>
+        <label for="start-date">Başlangıç Tarihi:</label>
+        <input type="date" id="start-date">
+
+        <label for="end-date">Bitiş Tarihi:</label>
+        <input type="date" id="end-date">
+
+        <label for="pickup-location">Alış Yeri:</label>
+        <input type="text" id="pickup-location" placeholder="Şehir / Lokasyon">
+
+        <label for="drop-location">Teslim Yeri:</label>
+        <input type="text" id="drop-location" placeholder="Şehir / Lokasyon">
+
+        <button onclick="makeReservation()">Rezervasyon Yap</button>
+    </div>
+</section>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
