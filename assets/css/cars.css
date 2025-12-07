@@ -1,0 +1,697 @@
+/* ==========================
+   GENEL TASARIM
+========================== */
+body {
+    background: #f2f2f7;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.cars-container {
+    width: 95%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* ==========================
+   HEADER
+========================== */
+.cars-header {
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cars-header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+}
+
+.cars-nav a {
+    margin-left: 18px;
+    text-decoration: none;
+    color: #555;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: .2s;
+    font-weight: 500;
+}
+
+.cars-nav a:hover,
+.cars-nav a.active {
+    background: #007aff;
+    color: #fff;
+}
+
+/* ==========================
+   ÜST KONTROL ALANI
+========================== */
+.cars-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+/* Filtre Butonları */
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border-radius: 12px;
+    border: none;
+    background: #e5e5ea;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.filter-btn.active {
+    background: #007aff;
+    color: #fff;
+}
+
+.filter-btn:hover {
+    background: #d1d1d6;
+}
+
+/* Sağ Kontroller */
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Favoriler Butonu */
+.favorites-btn {
+    padding: 10px 18px;
+    background: #ff2d55;
+    border-radius: 12px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.favorites-btn:hover {
+    opacity: .85;
+}
+
+.favorites-btn.on {
+    background: #ff9fb3;
+}
+
+/* Arama Kutusu */
+.search-box-input input {
+    width: 220px;
+    padding: 11px 16px;
+    border-radius: 25px;
+    border: none;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    font-size: 14px;
+}
+
+/* ==========================
+   ARAÇ KARTLARI GRID
+========================== */
+.car-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    padding-bottom: 40px;
+}
+
+/* Araç Kartı */
+.car-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,.08);
+    transition: .25s;
+}
+
+.car-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 28px rgba(0,0,0,.12);
+}
+
+.car-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.car-card h3 {
+    margin: 10px 0 4px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.car-card p {
+    margin: 4px 0;
+    color: #666;
+}
+
+/* Kart Favori Butonu */
+.favorite-btn {
+    width: 100%;
+    padding: 10px;
+    background: #ffeeba;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.favorite-btn:hover {
+    background: #ffd97a;
+}
+
+/* Kirala Butonu */
+.rent-btn {
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.rent-btn:hover {
+    background: #218838;
+}
+
+/* ==========================
+   DETAY MODAL
+========================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    width: 90%;
+    max-width: 950px;
+    border-radius: 16px;
+    padding: 25px;
+    z-index: 2100;
+    animation: fadeUp .3s ease;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal Kapat Butonu */
+.modal-close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    border: none;
+    background: #f2f2f7;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Modal İç Yapı */
+.detail-wrapper {
+    display: flex;
+    gap: 26px;
+}
+
+.detail-left {
+    flex: 1;
+}
+
+.detail-main-img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.detail-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.detail-thumbs img {
+    width: 80px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.detail-thumbs img:hover {
+    border-color: #007aff;
+}
+
+/* Sağ Kısım */
+.detail-right {
+    flex: 1;
+}
+
+/* Sekmeler */
+.detail-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: none;
+    background: #e5e5ea;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tab-btn.active {
+    background: #007aff;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== Avantajlar Yeni Tasarım ===== */
+
+.advantages-box {
+    margin-top: 15px;
+}
+
+.advantages-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.adv-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: #f9fafb;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    border: 1px solid #e5e7eb;
+    transition: 0.2s;
+}
+
+.adv-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.adv-card-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    background: #e0f7f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0ea5a4;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.adv-card-text {
+    font-size: 15px;
+    font-weight: 500;
+}
+.advantages-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.adv-card {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: 0.25s;
+}
+
+.adv-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.adv-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #e0f7f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adv-card-text {
+    margin-left: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #111;
+}
+
+
+
+
+/* Detay içi butonlar */
+
+
+.detail-btn {
+    width: 100%;
+    padding: 10px;
+    background: #e5e7eb;
+    color: #111;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.detail-btn:hover {
+    background: #d1d5db;
+}
+.detail-icons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.detail-icons div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f5f5f7;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.detail-icons img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+
+.sort-select {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: none;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s;
+}
+
+.sort-select:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.sort-select:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0 0 0 2px #007aff50;
+}
+.detail-modal {
+    max-width: 900px;
+    width: 90%;
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+}
+
+.detail-wrapper {
+    display: flex;
+    gap: 25px;
+}
+
+.detail-left {
+    flex: 1;
+}
+
+.detail-right {
+    flex: 1;
+}
+/* ========= REZERVASYON MODAL STİLİ ========= */
+
+#reservationModal .modal-content {
+    background: #fff;
+    width: 550px;
+    padding: 30px 35px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+}
+
+#reservationModal h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#reservationModal .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+#reservationModal label {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+#reservationModal input,
+#reservationModal select {
+    padding: 12px;
+    border: 1px solid #d1d1d6;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #f9f9fb;
+    outline: none;
+}
+
+#reservationModal input:focus,
+#reservationModal select:focus {
+    border-color: #007aff;
+    background: #fff;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.rent-submit {
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 5px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.rent-submit:hover {
+    background: #218838;
+}
+
+.reservation-message {
+    margin-top: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #007aff;
+    text-align: center;
+}
+
+/* X butonu */
+#reservationModal .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #f2f2f7;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* --- DETAY BUTONLARI (YAN YANA MODERN TASARIM) --- */
+.detail-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 25px;
+}
+
+/* Favori Butonu */
+.detail-buttons .favorite-btn {
+    flex: 1;
+    padding: 14px 0;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #fff4d6, #ffe9b0);
+    color: #5d4a1f;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.detail-buttons .favorite-btn:hover {
+    background: linear-gradient(135deg, #ffe9b0, #ffd97a);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+/* Kirala Butonu */
+.detail-buttons .rent-btn {
+    flex: 1;
+    padding: 14px 0;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(135deg, #28a745, #1f8a37);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,128,0,0.25);
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.detail-buttons .rent-btn:hover {
+    background: linear-gradient(135deg, #22c55e, #1a9e3c);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,128,0,0.30);
+}
+
+/* Kart içi buton düzeni */
+.card-top-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Favori butonu */
+.car-card .favorite-btn {
+    flex: 1;
+    padding: 10px 0;
+    background: #ffeeba;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .2s;
+}
+.car-card .favorite-btn:hover {
+    background: #ffd97a;
+}
+
+/* Detay butonu */
+.car-card .detail-btn {
+    flex: 1;
+    padding: 10px 0;
+    background: #e5e5ea;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .2s;
+}
+.car-card .detail-btn:hover {
+    background: #d1d1d6;
+}
+
+/* Kirala butonu */
+.car-card .rent-btn {
+    width: 100%;
+    padding: 12px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .2s;
+}
+.car-card .rent-btn:hover {
+    background: #218838;
+}

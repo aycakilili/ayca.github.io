@@ -1,0 +1,975 @@
+/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ROOT VARIABLES */
+:root {
+    --bg-dark: #0d0d0d;
+    --bg-light: #1a1a1a;
+    --primary: #f8c401; 
+    --text: #ffffff;
+    --gray: #cccccc;
+    --card-bg: #111;
+}
+
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+body.index-page {
+    background-color: #000;
+}.home-bottom {
+    padding: 60px 40px;
+    background: #000;       /* ya da açık renk */
+    color: white;
+    text-align: center;
+}
+
+.home-bottom h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.bottom-car-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.bottom-car-gallery img {
+    width: 260px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.bottom-car-gallery img:hover {
+    transform: translateY(-6px);
+}
+
+
+/* NAVBAR */
+.navbar {
+    width: 100%;
+    padding: 20px 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(8px);
+    transition: 0.3s ease;
+}
+
+.navbar.shrink {
+    padding: 10px 30px;
+    background: rgba(10, 10, 10, 0.9);
+}
+
+/* LOGO */
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: #fff;
+}
+.logo span {
+    color: var(--primary);
+    letter-spacing: 2px;
+}
+
+/* NAV LINKS */
+.nav-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 400;
+    transition: 0.25s ease;
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
+    background: var(--primary) !important;
+    color: #000 !important;
+    transform: translateY(-3px);
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+    padding: 8px 14px;
+    background: transparent;
+    color: #fff;
+    border-radius: 6px;
+    font-weight: 500;
+    white-space: nowrap;
+    display: inline-flex;
+    transition: 0.3s ease;
+}
+
+.login-btn:hover {
+    background: var(--primary);
+    color: #000 !important;
+}
+
+/* MOBILE MENU */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+.hamburger span {
+    width: 26px;
+    height: 3px;
+    background: var(--text);
+    border-radius: 2px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        background: #111;
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+        display: none;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* TAM ARKA PLAN GÖRSEL */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background: url('../images/hero-car.jpg') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Sağ tarafa içerik gelsin */
+    align-items: center;
+    padding-right: 80px;
+    
+    padding-bottom: 250px;
+}
+
+
+/* Sol taraftaki karartma efekti */
+.hero-overlay {
+    position: absolute;
+    left: 0;
+    width: 50%;          /* Sol yarıyı karartır */
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+}
+
+
+
+.hero-right {
+    display: flex;
+    align-items: flex-start; /* Üste yapışmayı engeller */
+    justify-content: center;
+    padding-top: 120px;      /* Burayı artır → aşağı iner */
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    max-width: 650px;
+    width: 100%;
+    /* BURASI ÖNEMLİ – TAM ORTALAMA */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;   /* yatay ortalama */
+    justify-content: center; /* dikey ortalama */
+    height: 100%; /* hero alanının tamamını kapsasın */
+    padding: 20px;
+}
+
+
+
+
+/* Yazılar */
+.hero-content h1 {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-right: 0px;
+    flex-wrap: nowrap;
+    transform: translateX(40px);
+}
+
+
+.search-box input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    width: 150px;
+}
+
+.search-box button {
+    padding: 12px 18px;
+    background: #ffca0d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-box button:hover {
+    background: #ffdd3b;
+}
+
+
+/* MOBİL */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse;
+        height: auto;
+    }
+
+    .hero-left,
+    .hero-right {
+        width: 100%;
+        height: 50vh;
+    }
+}
+
+
+
+/* ====== ARAÇLAR SAYFASI GENEL ====== */
+
+.cars-body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f2f2f7;
+}
+
+.cars-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto 60px;
+}
+
+/* HEADER */
+
+.cars-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.cars-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111;
+}
+
+.cars-nav a {
+    margin-left: 18px;
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    position: relative;
+}
+
+.cars-nav a.active,
+.cars-nav a:hover {
+    color: #007aff;
+}
+
+.cars-nav a.active::after,
+.cars-nav a:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background: #007aff;
+    border-radius: 999px;
+}
+
+/* ÜST KONTROL ALANI */
+
+.cars-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Filtre Butonları */
+
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: none;
+    background: #e5e5ea;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.filter-btn.active {
+    background: #007aff;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 122, 255, 0.3);
+}
+
+.filter-btn:hover:not(.active) {
+    background: #d1d1d6;
+}
+
+/* Sağ taraftaki kontroller */
+
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.favorites-btn {
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #ff2d55;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.favorites-btn.on {
+    background: #ff9fb3;
+    color: #3a0b16;
+}
+
+.favorites-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 45, 85, 0.4);
+}
+
+.sort-select {
+    padding: 7px 10px;
+    border-radius: 999px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background: #fff;
+}
+
+.search-box input {
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid #ccc;
+    min-width: 180px;
+    font-size: 14px;
+}
+
+/* KART LİSTESİ */
+
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Kart */
+
+.car-card {
+    width: 260px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+}
+
+.car-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.car-card img {
+    width: 100%;
+    border-radius: 14px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.car-card h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    color: #111;
+}
+
+.car-type {
+    font-size: 14px;
+    color: #6b6b6b;
+}
+
+.car-price {
+    margin-top: 4px;
+    font-weight: 600;
+    color: #111;
+}
+
+/* Butonlar */
+
+.favorite-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #ffe8b3;
+    font-size: 14px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.detail-btn,
+.rent-btn {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.detail-btn {
+    background: #e5e5ea;
+    color: #111;
+}
+
+.detail-btn:hover {
+    background: #d1d1d6;
+}
+
+.rent-btn {
+    background: #28a745;
+    color: white;
+}
+
+.rent-btn:hover {
+    background: #23913c;
+}
+
+.empty-text {
+    text-align: center;
+    color: #555;
+    margin-top: 40px;
+}
+
+/* ====== MODAL ====== */
+
+.modal.hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 16px;
+    padding: 18px 20px;
+    z-index: 2;
+    max-width: 700px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: scaleIn 0.25s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 10px;
+}
+
+/* Detay modali */
+
+.detail-body {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.detail-body img {
+    width: 260px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.detail-info h2 {
+    margin: 0 0 6px;
+}
+
+.detail-type {
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.detail-price {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.detail-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+    font-size: 14px;
+}
+
+.detail-list li {
+    margin-bottom: 3px;
+}
+
+.detail-desc {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Rezervasyon formu */
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.rent-submit {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 999px;
+    border: none;
+    background: #ff9500;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.rent-submit:hover {
+    background: #e08600;
+}
+
+.reservation-message {
+    font-size: 13px;
+    margin-top: 6px;
+    color: #c0392b;
+}
+
+.reservation-message.ok {
+    color: #1e7e34;
+}
+
+/* Animasyonlar */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.93);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .cars-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .cars-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .detail-body {
+        flex-direction: column;
+    }
+
+    .detail-body img {
+        width: 100%;
+    }
+
+    .car-card {
+        width: 100%;
+        max-width: 360px;
+    }
+}
+
+/* Step Modal */
+.reservation-modal {
+    max-width: 600px;
+}
+
+.step {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.step.active {
+    display: block;
+}
+
+.step-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.step-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#prevBtn, #nextBtn {
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #007aff;
+    color: white;
+    font-size: 15px;
+}
+
+#prevBtn {
+    background: #aaa;
+}
+
+#prevBtn:hover {
+    background: #888;
+}
+
+#nextBtn:hover {
+    background: #0060d4;
+}
+
+#summaryBox {
+    background: #f4f4f4;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.detail-modal {
+   max-width: 900px;
+   padding: 20px;
+}
+
+.detail-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.detail-left { 
+    flex: 1;
+}
+
+.detail-main-img {
+    width: 100%;
+    border-radius: 12px;
+    height: 260px;
+    object-fit: cover;
+}
+
+.detail-thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.detail-thumbs img {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.2s;
+}
+
+.detail-thumbs img:hover {
+    opacity: 1;
+}
+
+.detail-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-price {
+    color: #28a745;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.detail-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.detail-icons div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f2f2f7;
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.detail-icons img {
+    width: 20px;
+}
+
+.detail-desc {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.detail-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.service-table.gold-pro {
+    padding: 70px 0;
+    background: linear-gradient(135deg, #0f0f0f, #1b1b1b);
+}
+
+.table-title, .table-sub {
+    color: #fff;
+}
+
+.table-title {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.table-sub {
+    color: #d9d9d9;
+    margin-bottom: 40px;
+}
+
+.rental-info {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    font-size: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 204, 102, 0.3);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.15);
+}
+
+.rental-info th {
+    background: linear-gradient(90deg, #b28a2a, #e4c16f);
+    color: #000;
+    padding: 18px;
+    text-align: left;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.rental-info td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(255, 207, 110, 0.2);
+    color: #fff;
+}
+
+.rental-info tr:hover td {
+    background: rgba(255, 215, 0, 0.08);
+    transition: 0.3s ease;
+}
+
+.t-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+    vertical-align: middle;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
+}
+
+.status.gold {
+    background: linear-gradient(90deg, #ffdf8f, #ffb400);
+    color: #000;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 13px;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+}
+
+/* İçerik */
+/*.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 450px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    padding: 30px;
+
+    
+}*/
+/*
+.hero-content {
+    background: rgba(0, 0, 0, 0.067);  /* Hafif saydam koyu arka plan 
+    backdrop-filter: blur(6px);       /* Blur efekti 
+    padding: 30px;
+    border-radius: 15px;
+}*/
+
+/* SEARCH BOX (YAN YANA) */
+/*.search-box {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}*/
+
